@@ -2,10 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 
-
-import React from 'react'
-import ReactDOM from 'react-dom'
-
 const App = () => {
   const course = 'Half Stack application development'
   const parts = [
@@ -26,13 +22,13 @@ const App = () => {
   return (
     <div>
       <Header course={course} />
-      <Content part1={part1} part2={part2} part3={part3} />
-      <Total part1={part1} part2={part2} part3={part3} />
+      <Content part={parts} />
+      <Total part={parts}/>
     </div>
   )
 }
 const Header = (props) => {
-  console.log(props);
+  // console.log(props[0]);
 
   return (
     <div>
@@ -45,19 +41,19 @@ const Content = (props) => {
 
   return (
     <div>
-      <p> {props.part1.name} has {props.part1.exercises} </p>
-      <p> {props.part2.name} has {props.part2.exercises} </p>
-      <p> {props.part3.name} has {props.part3.exercises} </p>
+      <p> {props.part[0].name} has {props.part[0].exercises} </p>
+      <p> {props.part[1].name} has {props.part[1].exercises} </p>
+      <p> {props.part[2].name} has {props.part[2].exercises} </p>
 
     </div>
   )
 }
 
 const Total = (props) => {
-  console.log(props.part1.exercises);
+  console.log(props.exercises);
   return (
     <div>
-      <p> The total number of excercises is {props.part1.exercises + props.part2.exercises + props.part3.exercises} </p>
+      <p> The total number of excercises is {props.part[0].exercises + props.part[1].exercises + props.part[2].exercises} </p>
     </div>
   )
 }
