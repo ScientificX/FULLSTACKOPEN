@@ -27,7 +27,7 @@ const App = () => {
       <Button onClick={theGood} text="good" />
       <Button onClick={theUgly} text="neutral" />
       <Button onClick={theBad} text="bad" />
-      <Display header2="Statistics" good={good} bad={bad} ugly={neutral} all={all} average={average} positive={positive} />
+      <Statistics header2="Statistics" good={good} bad={bad} ugly={neutral} all={all} average={average} positive={positive} />
     </div>
   )
 }
@@ -38,7 +38,7 @@ const Button = ({ onClick, text }) => {
     <button onClick={onClick} >{text}</button>
   )
 }
-const Display = ({ header2, good, bad, ugly, all, average, positive }) => {
+const Statistics = ({ header2, good, bad, ugly, all, average, positive }) => {
 
   return (
     <>
