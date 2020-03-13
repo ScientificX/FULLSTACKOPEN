@@ -16,6 +16,9 @@ const App = () => {
   const theUgly = () => {
     setNeutral(neutral + 1)
   }
+  const all = good + neutral + bad;
+  const average = ((1 * good) + (-1 * bad)) / all;
+  const positive = (good / all) * 100;
 
   return (
     <div>
@@ -24,18 +27,18 @@ const App = () => {
       <Button onClick={theGood} text="good" />
       <Button onClick={theUgly} text="neutral" />
       <Button onClick={theBad} text="bad" />
-      <Display header2="Statistics" good={good} bad={bad} ugly={neutral} />
+      <Display header2="Statistics" good={good} bad={bad} ugly={neutral} all={all} average={average} positive={positive} />
     </div>
   )
 }
 
-const Button = ({onClick, text}) => {
+const Button = ({ onClick, text }) => {
 
   return (
     <button onClick={onClick} >{text}</button>
   )
 }
-const Display = ({ header2, good, bad, ugly }) => {
+const Display = ({ header2, good, bad, ugly, all, average, positive }) => {
 
   return (
     <>
@@ -43,6 +46,9 @@ const Display = ({ header2, good, bad, ugly }) => {
       <p>Good {good} </p>
       <p>Neutral {ugly} </p>
       <p>Bad {bad} </p>
+      <p>All {all} </p>
+      <p>Average {average} </p>
+      <p>positive {positive} % </p>
     </>
 
   )
