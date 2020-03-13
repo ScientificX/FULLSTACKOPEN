@@ -16,39 +16,54 @@ const App = () => {
   const theUgly = () => {
     setNeutral(neutral + 1)
   }
-  const all = good + neutral + bad;
-  const average = ((1 * good) + (-1 * bad)) / all;
-  const positive = (good / all) * 100;
+  const all = good + neutral + bad ;
+  const average = ((1 * good) + (-1 * bad)) / all ;
+  const positive = (good / all) * 100 ;
+  if (good == 0 && neutral == 0 && bad == 0) {
 
-  return (
-    <div>
-      {/* <Display head="Give feedback" /> */}
+    return (
+      <>
       <h1>Give Feedback</h1>
       <Button onClick={theGood} text="good" />
       <Button onClick={theUgly} text="neutral" />
       <Button onClick={theBad} text="bad" />
-      <Statistics header2="Statistics" good={good} bad={bad} ugly={neutral} all={all} average={average} positive={positive} />
-    </div>
-  )
+      <p>No Feedback Given</p>
+      </>
+    )
+  } else {
+    return (
+      <div>
+        {/* <Display head="Give feedback" /> */}
+        <h1>Give Feedback</h1>
+        <Button onClick={theGood} text="good" />
+        <Button onClick={theUgly} text="neutral" />
+        <Button onClick={theBad} text="bad" />
+        <h2>Statistics</h2>
+        <Statistics value={good} text="Good" />
+        <Statistics value={neutral} text="Neutral" />
+        <Statistics value={bad} text="Bad" />
+        <Statistics value={all} text="All" />
+        <Statistics value={average} text="Average" />
+        <Statistics value={positive} text="Positive" />
+      </div>
+    )
+
+  }
+
+  
 }
 
-const Button = ({ onClick, text }) => {
+const Button = ({onClick, text}) => {
 
   return (
     <button onClick={onClick} >{text}</button>
   )
 }
-const Statistics = ({ header2, good, bad, ugly, all, average, positive }) => {
+const Statistics = ({ value, text }) => {
 
   return (
     <>
-      <h2>{header2}</h2>
-      <p>Good {good} </p>
-      <p>Neutral {ugly} </p>
-      <p>Bad {bad} </p>
-      <p>All {all} </p>
-      <p>Average {average} </p>
-      <p>positive {positive} % </p>
+      <p>  {text} {value} </p>
     </>
 
   )
@@ -57,3 +72,4 @@ const Statistics = ({ header2, good, bad, ugly, all, average, positive }) => {
 ReactDOM.render(<App />,
   document.getElementById('root')
 )
+
