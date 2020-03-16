@@ -14,22 +14,47 @@ const anecdotes = [
 
 const App = (props) => {
   const [selected, setSelected] = useState(0)
-  // const vaj = Math.floor(Math.random() * 10)
-  const Anecdote = () => { setSelected(1 + Math.ceil((Math.random())*100) % 5) }
-  console.log(selected);
+  const [vote, setVote] = useState({ 0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 })
+
+  
+  const Anecdote = () => { setSelected(Math.ceil((Math.random()) * 100) % 5) }
+  const copy = { ...vote };
+  copy[selected] += 1
+  const voted = () => setVote(copy)
+  
+
+  let i = 0;
+  let max = 0;
+
+  const filters = Object.entries(vote); 
+  
+  let j = 0;
+  for (i; i < filters.length; i++ ){
+    if (filters[i][1] > max ) {
+      max = filters[i][1];
+      j = i;
+    }
+  }
+  
+
+  
   return (
-    
+
     <div>
-      
-     
-      {props.anecdotes[selected]} <br></br>
+
+      <h2>Anecdote The The Day</h2>
+      {anecdotes[selected]} <br></br>
       <button onClick={Anecdote} >next anecdote</button>
+      <button onClick={voted}>Vote {vote[selected]}</button>
+      <h2>Anecdote with most votes</h2>
+      <p>{anecdotes[j]}</p>
+
     </div>
   )
 }
 
 
 ReactDOM.render(
-  <App anecdotes={anecdotes} />,
+  <App />,
   document.getElementById('root')
 )
