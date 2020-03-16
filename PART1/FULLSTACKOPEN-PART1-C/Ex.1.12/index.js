@@ -17,23 +17,23 @@ const App = (props) => {
   const [vote, setVote] = useState({ 0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 })
 
   
-  const Anecdote = () => { setSelected(Math.ceil((Math.random()) * 100) % 5) }
+  const Anecdote = () => {setSelected(Math.ceil(1 + (Math.random()) * 100) % 6) }
   const copy = { ...vote };
   copy[selected] += 1
   const voted = () => setVote(copy)
   
 
-  let i = 0;
+  
   let max = 0;
 
   const filters = Object.entries(vote); 
   
-  let j = 0;
-  for (i; i < filters.length; i++ ){
-    if (filters[i][1] > max ) {
-      max = filters[i][1];
-      j = i;
-    }
+  let index = 0;
+  for (const [key, value] of filters ){
+    if (value > max ) {
+      max = value;
+      index = key;
+    } 
   }
   
 
@@ -47,7 +47,7 @@ const App = (props) => {
       <button onClick={Anecdote} >next anecdote</button>
       <button onClick={voted}>Vote {vote[selected]}</button>
       <h2>Anecdote with most votes</h2>
-      <p>{anecdotes[j]}</p>
+      <p>{anecdotes[index]}</p>
 
     </div>
   )
