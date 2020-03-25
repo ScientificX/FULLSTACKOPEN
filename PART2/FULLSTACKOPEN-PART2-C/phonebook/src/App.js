@@ -42,6 +42,7 @@ const App = props => {
   );
 
   const lengthCheck = filtered.length;
+
   if (lengthCheck > 10) {
     return (
       <div>
@@ -57,8 +58,8 @@ const App = props => {
       </div>
     );
   }
-  if (lengthCheck < 10 && lengthCheck > 1 && lengthCheck != 1 || lengthCheck === 0) {
-    // console.log(filtered.length)
+  if ( lengthCheck == 0 || lengthCheck < 10 && lengthCheck > 1 && lengthCheck !== 1 ) {
+    console.log(filtered.length)
     return (
       <div>
         <h1>Countries</h1>
@@ -66,8 +67,6 @@ const App = props => {
           form={form}
           filter={filter}
           change0={change0}
-          change1={change1}
-          clean={clean}
         />
         <h2>Countries</h2>
 

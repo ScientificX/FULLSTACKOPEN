@@ -18,7 +18,7 @@ const Filter = ({ filtered, }) => {
     return (
       <div>
 
-        {filtered.map((person, i) => <Person name={person.name} capital={person.capital} population={person.population} language={person.languages} flag={person.flag} />)}
+        {filtered.map((person, i) => <Person key={i} name={person.name} capital={person.capital} population={person.population} language={person.languages} flag={person.flag} filtered={filtered} />)}
 
       </div>
 
