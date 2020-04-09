@@ -1,15 +1,23 @@
-import React from "react";
-import Person from './Person'
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import Country from './Country'
 
-const Filter = ({ filtered, }) => {
-  // console.log(filtered)
+const Filter = ({ filtered, show, buttons}) => {
+
+
+
+
+
+
+
+  
 
   if (filtered.length > 1  || filtered.length === 0) {
 
     return (
       <div>
-        {filtered.map((person, i) => (
-          <Person key={i} name={person.name} />
+        {filtered.map((country, i) => (
+          <Country key={i} name={country.name} />
         ))}
       </div>
     );
@@ -18,7 +26,11 @@ const Filter = ({ filtered, }) => {
     return (
       <div>
 
-        {filtered.map((person, i) => <Person key={i} name={person.name} capital={person.capital} population={person.population} language={person.languages} flag={person.flag} filtered={filtered} />)}
+        {filtered.map((country, i) => <Country key={i} name={country.name} 
+        capital={country.capital} population={country.population} language={country.languages}
+         flag={country.flag} filtered={filtered} show={show} 
+         buttons={buttons}
+         />)}
 
       </div>
 
