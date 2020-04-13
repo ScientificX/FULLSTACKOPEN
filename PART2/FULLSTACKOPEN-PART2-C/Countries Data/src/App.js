@@ -74,6 +74,7 @@ const App = props => {
           <Filter filtered={filtered}
             show={() => view}
             buttons={show}
+            setFilter={setFilter}
           />
 
         </ul>

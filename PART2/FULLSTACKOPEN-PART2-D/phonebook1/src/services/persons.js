@@ -17,10 +17,16 @@ const create = (object) => {
     return request.then( res => res.data )
 }
 
-const update = object => {
+const update = (id) => {
 
-    const request = axios.put(baseUrl,object)
+    const request = axios.delete(`${baseUrl}/${id}`, { params: { id: id } })
     return request.then(res => res.data)
 }
 
-export default {getAll, create, update}
+const replace = (id,object) =>{
+    const request = axios.put(`${baseUrl}/${id}`, object )
+    return request.then( res => res.data  )
+    
+}
+
+export default {getAll, create, update, replace}

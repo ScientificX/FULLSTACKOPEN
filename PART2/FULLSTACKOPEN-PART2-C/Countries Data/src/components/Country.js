@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 
-const Country = ({ name, capital, population, language, flag, show, buttons }) => {
+const Country = ({ name, capital, population, language, flag, show, buttons, setFilter }) => {
 
   const [weather, setWeather] = useState([])
 
@@ -22,7 +22,7 @@ const Country = ({ name, capital, population, language, flag, show, buttons }) =
   const temperature = current ? current.temperature : '';
   const wicon = current ? current.weather_icons.map(x => x) : ''
 
-  console.log(temperature, "then icon url", wicon)
+  // console.log(temperature, "then icon url", wicon)
 
   const mystyle = {
 
@@ -54,7 +54,7 @@ const Country = ({ name, capital, population, language, flag, show, buttons }) =
         <li>{name} </li>
         <p>{capital}</p>
         <p>{population}</p>
-        <button onClick={show} >view</button>
+        <button onClick={() => setFilter(name)} >view</button>
 
       </div>
     );

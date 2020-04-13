@@ -2,22 +2,17 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Country from './Country'
 
-const Filter = ({ filtered, show, buttons}) => {
+const Filter = ({ filtered, show, buttons, setFilter}) => {
 
 
 
-
-
-
-
-  
 
   if (filtered.length > 1  || filtered.length === 0) {
 
     return (
       <div>
         {filtered.map((country, i) => (
-          <Country key={i} name={country.name} />
+          <Country key={i} name={country.name} setFilter={setFilter} />
         ))}
       </div>
     );
@@ -30,6 +25,7 @@ const Filter = ({ filtered, show, buttons}) => {
         capital={country.capital} population={country.population} language={country.languages}
          flag={country.flag} filtered={filtered} show={show} 
          buttons={buttons}
+         
          />)}
 
       </div>
