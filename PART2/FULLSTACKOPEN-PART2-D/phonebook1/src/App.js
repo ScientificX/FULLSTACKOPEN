@@ -4,6 +4,7 @@ import Form from "./components/Form";
 import Filter from "./components/Filter";
 import axios from "axios";
 import personService from "./services/persons";
+import Notification from "./components/Notification";
 
 const App = (props) => {
   const [person, setPerson] = useState([]);
@@ -11,7 +12,7 @@ const App = (props) => {
   const [clean, setClean] = useState("");
   const [number, setNumber] = useState("");
   const [filter, setFilter] = useState("");
-  // const [del, setDel] = useState(false)
+  const [errors, setErrors] = useState(null);
 
   useEffect(() => {
     personService.getAll().then((res) => {
@@ -32,23 +33,20 @@ const App = (props) => {
 
     if (names) {
       if (window.confirm(`${clean} is already in the phonebook, replace?`)) {
-        const id = person.find(x => x.name === clean).id
+        const id = person.find((x) => x.name === clean).id;
         // console.log(id)
         const personObject1 = {
           name: clean,
           number: number,
         };
-        personService.replace(id, personObject1).then( res =>{
-          console.log(res)
+        personService.replace(id, personObject1).then((res) => {
+          console.log(res);
           // return setPerson(res)
-          
-        })
-        personService.getAll().then( res => setPerson(res))
+        });
+        personService.getAll().then((res) => setPerson(res));
 
-
-        console.log(person)
+        console.log(person);
       }
-
     } else {
       const personObject = {
         name: clean,
@@ -56,7 +54,13 @@ const App = (props) => {
       };
 
       personService.create(personObject).then((res) => {
-        // console.log(res)
+        setErrors(
+          `Note ${personObject.name} was added `
+        );
+        setTimeout(() => {
+          setErrors(null);
+        }, 5000);
+
         return setPerson(person.concat(res));
       });
     }
@@ -69,20 +73,31 @@ const App = (props) => {
       personService
         .update(id)
         .then((res) => {
-          console.log(res);
+          
+          setErrors(
+            `Note ${person
+              .filter((x) => x.id === id)
+              .map((x) => x.name)} was removed`
+          );
+          setTimeout(() => {
+            setErrors(null);
+          }, 5000);
+
           setFilter("");
         })
         .catch((error) => {
-          alert(
-            `the note '${person
+          setErrors(
+            `Note ${person
               .filter((x) => x.id === id)
-              .map((x) => x.name)}' was already deleted from server`
+              .map((x) => x.name)} was already removed `
           );
+          setTimeout(() => {
+            setErrors(null);
+          }, 5000);
           setPerson(person.filter((n) => n.id !== id));
         });
 
-        personService.getAll().then(res => setPerson(res))
-
+      personService.getAll().then((res) => setPerson(res));
     }
   };
 
@@ -107,6 +122,7 @@ const App = (props) => {
   return (
     <div>
       <h1>Phonebook</h1>
+      <Notification message={errors} />
       <Form
         form={form}
         filter={filter}
