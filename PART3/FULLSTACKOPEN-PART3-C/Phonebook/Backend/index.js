@@ -1,20 +1,22 @@
-require('dotenv').config()
 const express = require("express");
-const Person = require("./models/persons");
-const morgan = require("morgan");
-const cors = require("cors");
 const app = express();
-
-app.use(cors());
-app.use(express.json());
-app.use(express.static("build"));
-morgan.token("data", (req, res) => {
+const Sentry = require('@sentry/node');
+Sentry.init({ dsn: 'https://3a5e56a169b04e8581c111a3acf59bf7@o388849.ingest.sentry.io/5226224' });
+const morgan = require("morgan");
+morgan.token("post", (req, res) => {
   return JSON.stringify(req.body);
 });
-
-const log = () =>
-  morgan(":method :url :status :res[content-length] :response-time :data");
-// app.use(log());
+require('dotenv').config()
+app.use(express.json());
+const Person = require('./models/persons')
+app.use(
+  morgan(":method :post :status :res[content-length] - :response-time ms")
+);
+app.use(Sentry.Handlers.requestHandler());
+const cors = require("cors");
+app.use(cors());
+app.disable('etag');
+mongoose.set('useFindAndModify', false)
 
 app.get("/", (req, res) => {
   res.send("<h1>this is backend</h1>");
@@ -32,51 +34,67 @@ app.get("/info", (req, res) => {
 });
 
 app.get("/api/persons/:id", (req, res) => {
-  const id = Number(req.params.id);
-  const person = persons.find((person) => person.id === id);
-  if (person) {
-    res.json(person);
-  } else {
-    res.status(404).end();
-  }
+  const id = req.params.id;
+  Person.findById(id).then(person => {
+    if (person) {
+      res.json(person.toJSON())
+    } else {
+      res.status(404).end() 
+    }
+  })
+  .catch(error => {
+
+    res.json({"error": "malformatted id"}).end()
+    throw new Error(error);
+    
+  })
 });
 
 app.delete("/api/persons/:id", (req, res) => {
-  const id = Number(req.params.id);
-  persons = persons.filter((person) => person.id !== id);
-  res.status(204).end();
+  const id = req.params.id
+  Person.findByIdAndDelete(id).then( person => {
+    res.status(204).end();
+  })
+  
 });
 
 
-app.post("/api/persons", log(), (req, res) => {
+app.post("/api/persons",(req, res) => {
   const body = req.body;
   const person = new Person({
     name: body.name,
     number: body.number,
   });
-  if (
-    body.name === "" ||
-    body.name == undefined ||
-    body.number === "" ||
-    body.number === undefined
-  ) {
-    res.status(400).json({
-      error: "name or number missing",
-    });
-  } else if (
-    Person.find({}).then(persons => {
-      persons.find(p => p.name.toLowerCase() === person.name.toLowerCase())
-    })
-  ) {
-    res.status(400).json({
-      error: "name must be unique",
-    });
-  } else {
-    person.save().then(savedPerson => {
-      response.json(savedPerson.toJSON())
-    })
+
+  person.save().then( saved => {
+    res.json(saved)
+  })
+})
+
+app.put("/api/persons/:id", (req, res) =>{
+  const body = req.body
+
+  const person = {
+    name: body.name,
+    number: body.number,
   }
+  Person.findByIdAndUpdate(req.params.id, person, {new: true})
+  .then( updatedPerson => {
+    res.json(updatedPerson.toJSON())
+  })
+  .catch( error => {
+
+    res.json({"error": "update error"}).end()
+    throw new Error(error)
+  } )
+} )
+
+app.get('/debug-sentry', (req, res) =>{
+  throw new Error('My first Sentry error!');
 });
+
+app.use(Sentry.Handlers.errorHandler());
+
 
 const PORT = process.env.PORT || 3001;
 
