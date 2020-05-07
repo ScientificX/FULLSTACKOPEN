@@ -1,0 +1,14 @@
+.person {
+  color: rgb(0, 89, 255);
+  padding-top: 5px;
+  font-size: 15px;
+}
+.error {
+  color: green;
+  background: lightgrey;
+  font-size: 20px;
+  border-style: solid;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}

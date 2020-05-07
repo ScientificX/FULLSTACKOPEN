@@ -16,7 +16,7 @@ app.use(Sentry.Handlers.requestHandler());
 const cors = require("cors");
 app.use(cors());
 app.disable('etag');
-mongoose.set('useFindAndModify', false)
+
 
 app.get("/", (req, res) => {
   res.send("<h1>this is backend</h1>");
@@ -28,10 +28,7 @@ app.get("/api/persons", (req, res) => {
   });
 });
 
-app.get("/info", (req, res) => {
-  const date = new Date();
-  res.send(`<p>Phonebook has info for ${persons.length} people </p> ${date}`);
-});
+
 
 app.get("/api/persons/:id", (req, res) => {
   const id = req.params.id;
@@ -89,8 +86,11 @@ app.put("/api/persons/:id", (req, res) =>{
   } )
 } )
 
-app.get('/debug-sentry', (req, res) =>{
-  throw new Error('My first Sentry error!');
+app.get('/info', (req, res) =>{
+  Person.countDocuments({}).then( number => {
+    res.send(`<h1>The number of persons in the database is ${number} on ${new Date()}</h1>`)
+
+  })
 });
 
 app.use(Sentry.Handlers.errorHandler());
