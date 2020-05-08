@@ -63,8 +63,9 @@ const App = (props) => {
 
         setPerson(person.concat(res));
       }).catch(error => {
-        setErrors(error.response.data)
-
+        setErrors('Validation error: character must be greater than 3')
+        // console.log("error response",error.response)
+        // console.log("errror response data",error.response.data)
         setTimeout(() => {
           setErrors(null);
         }, 5000);
