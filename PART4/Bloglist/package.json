@@ -4,7 +4,7 @@
   "description": "for blogs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --verbose",
     "dev": "nodemon index.js"
   },
   "author": "Otigr",
@@ -16,6 +16,7 @@
     "mongoose": "^5.9.14"
   },
   "devDependencies": {
+    "jest": "^26.1.0",
     "nodemon": "^2.0.4"
   }
 }
