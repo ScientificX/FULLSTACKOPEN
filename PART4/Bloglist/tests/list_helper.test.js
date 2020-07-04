@@ -1,6 +1,7 @@
-const listHelper = require("../utils/list_helper");
+const listHelper = require("../utils/list_helper")
 const totalLikes = listHelper.totalLikes
 const mostLikes = listHelper.mostLikes
+const mostBlogs = listHelper.mostBlogs
 
 const blogs = [
   {
@@ -80,6 +81,12 @@ describe("total likes", () => {
     
 
     expect(mostLikes(blogs).author).toBe("Edsger W. Dijkstra")
+  })
+
+  test("most blogs", () => {
+
+    expect(mostBlogs(blogs).blogs).toBe(3)
+  
   })
 
 });

@@ -1,22 +1,4 @@
-// const palindrome = (string) => {
-//     return string
-//       .split('')
-//       .reverse()
-//       .join('')
-//   }
 
-//   const average = (array) => {
-//     const reducer = (sum, item) => {
-//       return sum + item
-//     }
-
-//     return array.length ===  0 ? 0 : array.reduce(reducer, 0) / array.length
-//   }
-
-//   module.exports = {
-//     palindrome,
-//     average,
-//   }
 
 const dummy = (blogs) => {
   return 1;
@@ -42,37 +24,21 @@ const favouriteBlog = (blogs) => {
 
 const mostBlogs = (blogs) => {
 
+  var authors = blogs.reduce((acc, curr) => {
+    acc[curr.author] = (acc[curr.author] || 0) + 1
+    return acc
+  }, {})
+  authors = Object.entries(authors).map(([author,blogs]) => ({author, blogs}))
 
+  var k = 0;
+  for (x of authors) {
+    k = Math.max(k, x.blogs);
+  }
+  const index = authors.findIndex((x) => x.blogs === k);
 
+  return authors.length === 0 ? 0 : authors[index] ;
 
-
-  // var blogCount = 0;
-  // var count = 0;
-  
-  // for ( var i = 0; i < blogs.length; i++){
-  //   blogCount = Math.max(blogCount, blogs.filter( blog => blog.author === blogs[i].author).length )
-  //   count = i;
-  // }
-  // const profile = {
-  //   "Author": `${blogs[count].author}`,
-  //   "blogs": `${blogCount}`
-  // }
 }
-
-// const mostLikes = (blogs) => {
-  
-//   var maxlike = 0;
-//   var index = 0;
-//   for (var i =0; i < blogs.length; i++){
-//     const authorBlogs = blogs.filter(blog => blog.author === blogs[i].author)
-//     const numberOfLikes = (sum, item) => {
-//       return sum + item.likes;
-//     }
-//     maxlike = Math.max(maxlike, authorBlogs.reduce(numberOfLikes,0))
-//   }
-
-// }
-
 
 const mostLikes = (blogs) =>{
 
@@ -100,4 +66,5 @@ module.exports = {
   totalLikes,
   favouriteBlog,
   mostLikes,
+  mostBlogs,
 };
