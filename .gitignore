@@ -23,5 +23,9 @@ yarn-debug.log*
 yarn-error.log*
 
 /node_modules
+/home/fascher/Desktop/FULLSTACKOPEN/PART5/bloglist-frontend/node_modules/
+/home/fascher/Desktop/FULLSTACKOPEN/PART3/FULLSTACKOPEN-PART3-A/node_modules/
+/home/fascher/Desktop/FULLSTACKOPEN/PART3/FULLSTACKOPEN-PART3-D/Phonebook/Frontend/node_modules/
 
+/home/fascher/Desktop/FULLSTACKOPEN/PART2/FULLSTACKOPEN-PART2-E/Phonebook/node_modules/
 
