@@ -10,12 +10,12 @@ const getTokenFrom = request => {
   return null
 }
 
-blogRouter.get("/api/blogs", async (request, response) => {
+blogRouter.get("/", async (request, response) => {
   const blogs = await Blog.find({}).populate('author');
   response.json(blogs);
 });
 
-blogRouter.post("/api/blogs", async (request, response) => {
+blogRouter.post("/", async (request, response) => {
   const r = request.body;
 
   const token = getTokenFrom(r)
@@ -46,7 +46,7 @@ blogRouter.post("/api/blogs", async (request, response) => {
 });
 
 
-blogRouter.delete("/api/blogs/:id", async (request, response) => {
+blogRouter.delete("/:id", async (request, response) => {
   const r = request.body
   const token = getTokenFrom(r)
   const decodedToken = jwt.verify(token, process.env.SECRET)
@@ -61,7 +61,7 @@ blogRouter.delete("/api/blogs/:id", async (request, response) => {
   response.status(204).end();
 });
 
-blogRouter.put("api/blogs/:id", async (request, response) => {
+blogRouter.put("/:id", async (request, response) => {
   const body = request.body;
   const blog = {
     title: body.title,
