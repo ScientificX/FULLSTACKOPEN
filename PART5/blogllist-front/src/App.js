@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import Blog from "./components/Blog";
 import BlogForm from "./components/BlogForm"
 import Notification from './components/Notification'
+import Toggleable from './components/Toggleable'
 import blogService from "./services/blogs";
 import loginService from "./services/login"
 
 const App = () => {
   const [blogs, setBlogs] = useState([]);
+  const [currBLog, setCurrBlog] = useState(null)
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [title, setTitle] = useState("");
@@ -15,9 +17,12 @@ const App = () => {
   const [user, setUser] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null)
   const [loginVisible, setLoginVisible] = useState(false)
+  const [deletes, setDeletes] = useState(false)
 
   useEffect(() => {
-    blogService.getAll().then((blogs) => setBlogs(blogs));
+    blogService.getAll().then((blogs) => { 
+      // console.log(blogs) 
+      setBlogs(blogs)});
   }, []);
   
   useEffect(() => {
@@ -39,13 +44,14 @@ const App = () => {
       window.localStorage.setItem(
         'loggeduser', JSON.stringify(user)
       )
+      console.log(user)
       setUser(user)
       setErrorMessage("Logged in")
       setTimeout(() => {setErrorMessage(null)}, 5000)
       setUsername('')
       setPassword('')
     } catch (exception) {
-       setErrorMessage('Invalid Credentials')
+       setErrorMessage('<Invali></Invali>d Credentials')
        setTimeout( () => {setErrorMessage(null)}, 5000)
     }
 
@@ -67,15 +73,21 @@ const App = () => {
 
   }
 
+  const handleDeletes = async (id) => {
+    console.log(id)
+    await blogService.deletes(id)
+    const updatedBlogs = await blogService.getAll()
+    setBlogs(updatedBlogs)
+  }
+
+
+
   // const handleBlogCreate = (event) => {
   //   event.preventDefault()
 
   //   blogService.create()
 
   // }
-const hideWhenVisible = {display: loginVisible ? 'none' : ''}
-const showWhenVisible = {display: loginVisible ? '' : 'none'}
-
     
   const login = () => {
 
@@ -95,7 +107,7 @@ const showWhenVisible = {display: loginVisible ? '' : 'none'}
         <div>
           Password: 
           <input
-          type="text"
+          type="password"
           value={password}
           name="Password"
           onChange= {({target}) => setPassword(target.value)}
@@ -108,33 +120,25 @@ const showWhenVisible = {display: loginVisible ? '' : 'none'}
 
 
 
-
-
   return (
     <div>
       <Notification message={errorMessage}  />
       {user === null ? 
-      login() : 
+      login() :
       <div>
-        <p>{user.name} logged in  <button onClick={handleLogout}>logout</button> </p>
+        <p>{user.username} logged in  <button onClick={handleLogout}>logout</button> </p>
       </div>
       }
 
       {user !== null && 
-        <>
-        <div style={hideWhenVisible}>
-          <button onClick={() => setLoginVisible(true)}>New Blog</button>
-        </div>
-         <div style={showWhenVisible}>
-          <BlogForm handleNewBlog={handleNewBlog} /> 
-          <button onClick={() => setLoginVisible(false)}>cancel</button>
-        </div>
-      </>
-      }
+        <Toggleable buttonLabel="New Blog" >
+        <BlogForm handleNewBlog={handleNewBlog} />
+        </Toggleable>
+        }
 
       <h2>Blogs</h2>
-      {blogs.map( blog => 
-        <Blog key={blog.id} blog={blog} />
+      {blogs.map( blog =>      
+        <Blog key={blog.id} blog={blog} handleDeletes={handleDeletes} setCurrBlog={setCurrBlog}  />
       )}
 
     </div>

@@ -18,6 +18,14 @@ blogRouter.get('/', async (request, response) => {
   response.json(blogs.map(blog => blog.toJSON()))
 })
 
+router.get('/:id', async (request, response) => {
+  console.log(request.params.id)
+  const blog = await Blog
+    .findById(String(request.params.id)).populate('user', { username: 1, name: 1 })
+
+  response.json(blog)
+})
+
 blogRouter.post('/', async (request, response) => {
   const body = request.body
   const token = getTokenFrom(request)

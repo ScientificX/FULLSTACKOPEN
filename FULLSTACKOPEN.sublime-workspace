@@ -1,0 +1,383 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Reac",
+				"ReactDOM"
+			],
+			[
+				"find",
+				"find_url"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "PART5/bloglist-frontend/src/services/login.js",
+			"settings":
+			{
+				"buffer_size": 234,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"flow",
+				"Flow"
+			],
+			[
+				"TERMINA",
+				"Terminal View: Open Bash Terminal"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Preferences: Browse Packages"
+			],
+			[
+				"terminus cl",
+				"Terminus: Close"
+			],
+			[
+				"mat",
+				"Material Theme: Activate theme"
+			],
+			[
+				"terminus",
+				"Terminus: Open Default Shell in Panel"
+			],
+			[
+				"lsp",
+				"LSP: Disable Language Server Globally"
+			],
+			[
+				"activa",
+				"Material Theme: Activate theme"
+			],
+			[
+				"activat",
+				"Material Theme: Activate theme"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Satisfy Dependencies"
+			],
+			[
+				"restart",
+				"LSP: Restart Servers"
+			],
+			[
+				"start",
+				"LSP: Restart Servers"
+			],
+			[
+				"SERV",
+				"Set Syntax: JavaScript (Babel)"
+			],
+			[
+				"LSP S",
+				"LSP: Enable Language Server Globally"
+			],
+			[
+				"LSP",
+				"LSP: Restart Servers"
+			],
+			[
+				"INSTALL",
+				"Package Control: Install Package"
+			],
+			[
+				"sat",
+				"Package Control: Satisfy Dependencies"
+			],
+			[
+				"satis",
+				"Package Control: Satisfy Dependencies"
+			],
+			[
+				"lsp ser",
+				"LSP: Enable Language Server Globally"
+			],
+			[
+				"depen",
+				"Package Control: Satisfy Dependencies"
+			],
+			[
+				"LSP s",
+				"LSP: Enable Language Server Globally"
+			],
+			[
+				"keyb",
+				"Preferences: LSP Keybindings"
+			],
+			[
+				"forma",
+				"Format: Javascript"
+			],
+			[
+				"LSP: Enable Language Server",
+				"LSP: Enable Language Server Globally"
+			],
+			[
+				"pac",
+				"Package Control: Satisfy Dependencies"
+			],
+			[
+				"babe",
+				"Babel Transform"
+			],
+			[
+				"format",
+				"CodeFormatter: Format Code"
+			],
+			[
+				"run",
+				"Build With: C++ - Run in Terminal"
+			],
+			[
+				"",
+				"Build With: C++"
+			],
+			[
+				"install ",
+				"Package Control: Install Package"
+			],
+			[
+				"install pack",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 136.0,
+		"history":
+		[
+			"python",
+			"babel",
+			"f"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/home/fascher/Desktop/FULLSTACKOPEN"
+	],
+	"file_history":
+	[
+		"/home/fascher/Desktop/FULLSTACKOPEN/PART5/bloglist-frontend/src/App.js",
+		"/home/fascher/Desktop/FULLSTACKOPEN/PART5/bloglist-frontend/src/index.js",
+		"/home/fascher/.config/sublime-text-3/Packages/User/JavaScript-Completions.sublime-settings",
+		"/home/fascher/Desktop/FULLSTACKOPEN/PART5/bloglist-frontend/src/services/blogs.js",
+		"/home/fascher/Desktop/FULLSTACKOPEN/PART5/bloglist-frontend/.gitignore",
+		"/home/fascher/.config/sublime-text-3/Packages/sublime-react-ide/ReactIDE.sublime-settings",
+		"/home/fascher/Desktop/FULLSTACKOPEN/PART5/bloglist-frontend/src/components/Blog.js",
+		"/home/fascher/Desktop/FULLSTACKOPEN/PART5/bloglist-frontend/src/services/login.js",
+		"/home/fascher/Desktop/FULLSTACKOPEN/PART5/bloglist-frontend/src/App.css",
+		"/home/fascher/Desktop/FULLSTACKOPEN/PART5/bloglist-frontend/src/setupTests.js",
+		"/home/fascher/Desktop/FULLSTACKOPEN/PART5/bloglist-frontend/src/components/Notification.js",
+		"/home/fascher/Desktop/FULLSTACKOPEN/PART5/bloglist-frontend/requesests/new user.rest",
+		"/home/fascher/Desktop/FULLSTACKOPEN-TEST/Bloglist/tests/list_helper.test.js",
+		"/home/fascher/Desktop/FULLSTACKOPEN-TEST/Bloglist/index.js",
+		"/home/fascher/Desktop/FULLSTACKOPEN-TEST/Bloglist/controllers/notes.js",
+		"/home/fascher/Desktop/FULLSTACKOPEN-TEST/Bloglist/models/blog.js",
+		"/home/fascher/.config/sublime-text-3/Packages/Babel/Babel.sublime-settings",
+		"/home/fascher/Desktop/FULLSTACKOPEN-TEST/Bloglist/jest.config.js",
+		"/home/fascher/Documents/Aizucode/library algorithms.cxx",
+		"/home/fascher/Documents/Aizucode/Untitled1.py",
+		"/home/fascher/Documents/Aizucode/sublime.py",
+		"/home/fascher/Documents/jiande/first.cxx",
+		"/home/fascher/Documents/Aizucode/frst.acceleratedcpp.cxx",
+		"/home/fascher/Documents/Aizucode/sumofconsecutive.cxx",
+		"/home/fascher/Documents/Aizucode/sumof.cxx",
+		"/home/fascher/.config/sublime-text-3/Packages/User/C++.sublime-build"
+	],
+	"find":
+	{
+		"height": 28.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "PART5/bloglist-frontend/src/services/login.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 234,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								25,
+								25
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"word_separators": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}`~?"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 28.0
+	},
+	"input":
+	{
+		"height": 66.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "Packages/User/C++.sublime-build",
+	"project": "FULLSTACKOPEN.sublime-project",
+	"replace":
+	{
+		"height": 52.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

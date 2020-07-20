@@ -1,0 +1,10 @@
+DELETE http://localhost:3001/api/blogs/5f152b808c498715b8ad502e
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im90aWdlciIsImlkIjoiNWYxNGJjMDYxNTA3Y2VjYzVkMjNkYThmIiwiaWF0IjoxNTk1MjI0MTYyfQ.SsFvyKJC6VPHVpS3w8fSsYzvh8Dk-oNMoBKW4wIGf7Y
+# 
+
+#     "likes": 0,
+#     "title": "sdf",
+#     "author": "asd",
+#     "url": "asdf"
+# 

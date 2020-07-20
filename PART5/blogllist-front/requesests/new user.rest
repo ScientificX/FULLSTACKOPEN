@@ -1,7 +1,11 @@
-POST http://localhost:3001/api/login/
+POST  http://localhost:3001/api/blogs/
 Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im90aWdlciIsImlkIjoiNWYxNGJjMDYxNTA3Y2VjYzVkMjNkYThmIiwiaWF0IjoxNTk1MTk0Mzg3fQ.Z0xKqMNEXBy7KdNheKiXGHnV0st9EyOp9Y7HpVmE90Q
 
 {
-    "username": "f",
-    "password": "f"
+
+    "likes": 0,
+    "title": "sdf",
+    "author": "asd",
+    "url": "asdf"
 }
