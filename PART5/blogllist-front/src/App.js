@@ -51,7 +51,7 @@ const App = () => {
       setUsername('')
       setPassword('')
     } catch (exception) {
-       setErrorMessage('<Invali></Invali>d Credentials')
+       setErrorMessage('Invalid Credentials')
        setTimeout( () => {setErrorMessage(null)}, 5000)
     }
 
@@ -93,11 +93,13 @@ const App = () => {
 
     
     return (
-      <form onSubmit={handleLogin}>
+      <>
+      <form onSubmit={handleLogin} id='loginform' >
         <div>
           <h1>Login</h1>
           username 
           <input
+          id='username'
           type="text"
           value={username}
           name="Username"
@@ -107,14 +109,16 @@ const App = () => {
         <div>
           Password: 
           <input
+          id='password'
           type="password"
           value={password}
           name="Password"
           onChange= {({target}) => setPassword(target.value)}
           />
         </div>
-        <button type="submit">login</button>
+        <button type="submit" id='loginform' >login</button>
       </form>
+      </>
     );
   };
 
