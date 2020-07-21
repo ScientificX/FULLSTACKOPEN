@@ -6,7 +6,7 @@ const BlogForm = ({handleNewBlog}) => {
   const [author, setAuthor] = useState('')
   const [title, setTitle] = useState('')
   const [url, setUrl] = useState('')
-  const [likes, setLikes] = useState(null)
+  // const [likes, setLikes] = useState(null)
 
   const createBlog = (event) => {
     event.preventDefault()

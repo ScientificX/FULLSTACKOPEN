@@ -42,8 +42,8 @@ const Blog = ({ blog, handleDeletes, setCurrBlog }) => {
         <p>{blog.title}</p>
         <p>{blog.author}</p>
         <button onClick={() => setView(!view)}> unview </button>
-		<button onClick={likeHandle} >like</button>
-		<button onClick={handleDelete} >delete</button>
+		<button onClick={likeHandle} id='like-btn' >like</button>
+		<button onClick={handleDelete} id='delete-btn' >delete</button>
       </div>
     );
   };
