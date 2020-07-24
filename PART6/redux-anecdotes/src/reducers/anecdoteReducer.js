@@ -1,3 +1,5 @@
+import anecdoteService from "../services/anecdote";
+
 const anecdotesAtStart = [
   "If it hurts, do it more often",
   "Adding manpower to a late software project makes it later!",
@@ -23,7 +25,7 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case "VOTE":
       const id = action.data.id;
-      const voteAnecdote = state.find((a) => (a.id === id));
+      const voteAnecdote = state.find((a) => a.id === id);
       const votedAnecdote = {
         ...voteAnecdote,
         votes: voteAnecdote.votes + 1,
@@ -32,30 +34,59 @@ const reducer = (state = initialState, action) => {
     case "CREATE":
       const newAnecdote = action.data;
       return state.concat(newAnecdote);
+    case "INI_NOTES":
+      return action.data;
 
     default:
-      console.log("state now: ", state);
-      console.log("action", action);
+      // console.log("state now: ", state);
+      // console.log("action", action);
       return state;
   }
 };
 
 export const voteAction = (id) => {
-  return {
-    type: "VOTE",
-    data: { id },
+  return async (dispatch) =>  {
+    let toVote = await anecdoteService.getAll()
+    console.log(toVote)
+    toVote = toVote.map( a => a.id === id ? ++a.id : a)
+    await anecdoteService.createNew(toVote)
+    console.log(toVote)
+    dispatch(
+      {
+        type: "VOTE",
+        data: { id },
+       }
+    )
+
   };
 };
 
 export const createAnecdote = (anecdote) => {
-  return {
-    type: "CREATE",
-    data: {
-      content: anecdote,
-      id: getId(),
-      votes: 0
-    },
+  return async (dispatch) => {
+    await anecdoteService.createNew(anecdote);
+    // console.log(anecdote)
+    dispatch({
+      type: "CREATE",
+      data: {
+        content: anecdote,
+        id: getId(),
+        votes: 0,
+      },
+    });
   };
 };
+
+export const initializeAnecdotes = (init) => {
+  return async (dispatch) => {
+    const storedAnecdote = init ? init : await anecdoteService.getAll();
+    console.log('STORED ANECDOTES', typeof storedAnecdote, storedAnecdote)
+    dispatch({
+      type: "INI_NOTES",
+      data: storedAnecdote,
+    });
+  };
+};
+
+
 
 export default reducer;

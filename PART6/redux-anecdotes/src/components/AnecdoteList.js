@@ -5,15 +5,26 @@ import { voteAction } from '../reducers/anecdoteReducer'
 
 const AnecdoteList = () => {
     
-    const anecdotes = useSelector(state => state)
+    const anecdotes = useSelector( (  {anecdotes, notification, filter } ) => {
+
+      if (filter === null){
+        // console.log('anecdotes from anecdotelist', anecdotes)
+        // console.log('filter from anecdotelist', filter)
+        // console.log('FILLTERRRNULLL', anecdotes)
+        return anecdotes
+      }
+
+      return anecdotes.filter(a => {
+        return a.content.toLowerCase().includes(filter.toLowerCase() )
+      })
+
+    })
     const dispatch = useDispatch()
   
     const vote = (id) => {
       dispatch(voteAction(id))
-      
-      console.log('vote', id)
     }
-
+    console.log('ANECCCCDOTESSSS', typeof anecdotes)
 
     return(
         <div>
