@@ -1,14 +1,14 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, connect } from 'react-redux'
 import { filterBy } from '../reducers/filterReducer'
 
 
-const Filter = () => {
+const Filter = (props) => {
   const dispatch = useDispatch()
   const handleChange = (event) => {
     const input = event.target.value
     // console.log('input from form', input)
-    dispatch(filterBy(input))
+    props.filterBy(input)
   }
   const style = {
     marginBottom: 10
@@ -21,4 +21,14 @@ const Filter = () => {
   )
 }
 
-export default Filter
+const mapDispatchToProps = {
+  filterBy,
+}
+
+
+const ConnectedFilter = connect(
+  null,
+  mapDispatchToProps,
+)(Filter)
+
+export default ConnectedFilter

@@ -49,7 +49,7 @@ export const voteAction = (id) => {
     let toVote = await anecdoteService.getAll()
     console.log(toVote)
     toVote = toVote.map( a => a.id === id ? ++a.id : a)
-    await anecdoteService.createNew(toVote)
+    await anecdoteService.voteNow(toVote)
     console.log(toVote)
     dispatch(
       {
