@@ -1,4 +1,0 @@
-update-initramfs: Generating /boot/initrd.img-5.6.0-2parrot1-amd64
-I: The initramfs will attempt to resume from /dev/sda6
-I: (UUID=2aa5b2e2-6c74-4179-9657-9776808d543a)
-I: Set the RESUME variable to override this.
